@@ -23,7 +23,7 @@ shaftdia = 5;
 bodylength = 48;
 bodywidth = 42; //could also be diameter of a round servo
 motorwall = 2.75;
-motorcenterdia = 22;
+motorcenterdia = 25;
 
 //Structure pieces
 structbase = 110;  //180
@@ -42,7 +42,7 @@ cupwall = 2.7;
 
 
 //base
-basemotorwall = 4;
+basemotorwall = 2.7;
 
 //upper linkage
 upperlinkthick = nutapothem/cos(30);

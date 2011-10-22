@@ -29,6 +29,7 @@ difference(){
 				}
 		}
 		cylinder(r=shaftlength/2+basemotorwall, h=bodywidth);
+		translate([0,shaftlength/2,0])cube([structheight+structbracewidth/2/sin(45),basemotorwall,bodywidth+structheight]);
 	}
 
 	translate([0,0,-1])cylinder(r=shaftlength/2, h=bodywidth+2);
@@ -41,8 +42,14 @@ difference(){
 				translate([-holespacing/2,-holespacing/2,0])cylinder(r=screwdia/2, h = basemotorwall+2);
 				}
 		}
-}
+		translate([0,shaftlength/2-1,bodywidth])rotate([0,-45,0])cube([structheight/sin(45)+1,basemotorwall+2,structheight]);
 
+		translate([0,shaftlength/2+basemotorwall,bodywidth])rotate([90,0,0]){
+		for(i=[0 : ((structheight-structbracewidth*2)/sin(45))/(structholes-1) : ((structheight-structbracewidth*2)/sin(45))]){
+			rotate([0,0,45])translate([structbracewidth/sin(45)+screwdia+i,-structbracewidth/2,-1])cylinder(r=screwdia/2,h=basemotorwall+2);
+			}
+		}
+	}
 
 }
 base();
