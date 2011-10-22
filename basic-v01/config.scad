@@ -48,5 +48,10 @@ basemotorwall = 2.7;
 upperlinkthick = nutapothem/cos(30);
 upperlinkwidth = 20;
 
+//coupling
+leadscrewdia = 8;
+couplingwall = 6;
+couplingheight = 40;
+
 //general shit
 nutwall = nutapothem/4;
