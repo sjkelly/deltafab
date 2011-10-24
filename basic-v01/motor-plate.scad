@@ -22,7 +22,7 @@ module motorplate(){
 
 
 	//Breakout and distributed vars
-	plateheight = structheight/sin(45);
+	plateheight = holespacing+screwheaddia+motorwall*2/sin(45);
 	plateside = structthickness*2;
 
 difference(){
@@ -41,10 +41,10 @@ difference(){
 
 	//Create holes and nut traps
 	for(i=[0 : ((structheight-structbracewidth*2)/sin(45))/(structholes-1) : ((structheight-structbracewidth*2)/sin(45))]){
-		translate([0,0,platethickness+(nutapothem/2)])rotate([0,90,0])translate([0,plateheight/structholes*sin(45)+i,-1])cylinder(r=screwdia/2,h=plateside*2+nutheight+2);
-		translate([platelength,0,platethickness+(nutapothem/2)])rotate([0,-90,0])translate([0,plateheight/structholes*sin(45)+i,-1])cylinder(r=screwdia/2,h=plateside+nutheight*2+2);
-		translate([platelength,0,platethickness+(nutapothem/2)])rotate([0,-90,0])translate([0,plateheight/structholes*sin(45)+i,plateside])rotate([0,0,30])cylinder(r=nutapothem/cos(30)/2,h=nutheight+nutapothem+nutwall, $fn=6);
-		translate([0,0,platethickness+(nutapothem/2)])rotate([0,90,0])translate([0,plateheight/structholes*sin(45)+i,plateside])rotate([0,0,30])cylinder(r=nutapothem/cos(30)/2,h=nutheight+nutapothem+nutwall, $fn=6);
+		translate([0,0,platethickness+(nutapothem/2)])rotate([0,90,0])translate([0,plateheight-((structheight-structbracewidth*2)/sin(45))-nutapothem/cos(30)+i,-1])cylinder(r=screwdia/2,h=plateside*2+nutheight+2);
+		translate([platelength,0,platethickness+(nutapothem/2)])rotate([0,-90,0])translate([0,plateheight-((structheight-structbracewidth*2)/sin(45))-nutapothem/cos(30)+i,-1])cylinder(r=screwdia/2,h=plateside+nutheight*2+2);
+		translate([platelength,0,platethickness+(nutapothem/2)])rotate([0,-90,0])translate([0,plateheight-((structheight-structbracewidth*2)/sin(45))-nutapothem/cos(30)+i,plateside])rotate([0,0,30])cylinder(r=nutapothem/cos(30)/2,h=nutheight+nutapothem+nutwall, $fn=6);
+		translate([0,0,platethickness+(nutapothem/2)])rotate([0,90,0])translate([0,plateheight-((structheight-structbracewidth*2)/sin(45))-nutapothem/cos(30)+i,plateside])rotate([0,0,30])cylinder(r=nutapothem/cos(30)/2,h=nutheight+nutapothem+nutwall, $fn=6);
 	
 		
 	}
@@ -57,12 +57,12 @@ difference(){
 	translate([platelength-(plateside+nutheight+nutapothem+nutwall),-1,platethickness])rotate([0,45,0])translate([-nutapothem-nutwall,0,0])cube([nutapothem+nutwall,plateheight+2,(nutapothem+nutwall)/sin(45)]);
 	
 	//motor
-	translate([platelength/2,plateheight/2,platethickness])rotate([45,0,0])translate([0,0,bodywidth/2/sin(45)+platethickness])cube([bodywidth,bodywidth,(screwheaddia+motorwall*2)/sin(45)],center=true);
-	translate([platelength/2,plateheight/2,0])rotate([45,0,0])translate([0,0,-motorcenterdia/2])cylinder(r=motorcenterdia/2, h=bodywidth);
-	translate([platelength/2+holespacing/2,plateheight/2+holespacing/2,0])rotate([45,0,0])translate([0,0,-screwheaddia/2])cylinder(r=screwheaddia/2, h=bodywidth);
-	translate([platelength/2-holespacing/2,plateheight/2+holespacing/2,0])rotate([45,0,0])translate([0,0,-screwheaddia/2])cylinder(r=screwheaddia/2, h=bodywidth);
-	translate([platelength/2+holespacing/2,plateheight/2-holespacing/2,0])rotate([45,0,0])translate([0,0,-screwheaddia/2])cylinder(r=screwheaddia/2, h=bodywidth/2);
-	translate([platelength/2-holespacing/2,plateheight/2-holespacing/2,0])rotate([45,0,0])translate([0,0,-screwheaddia/2])cylinder(r=screwheaddia/2, h=bodywidth/2);
+	%translate([platelength/2,plateheight/2,platethickness])rotate([45,0,0])translate([0,0,bodylength/2+plateheight/2*sin(45)])cube([bodywidth,bodywidth,bodylength],center=true);
+	translate([platelength/2,plateheight/2,platethickness])rotate([45,0,0])translate([0,0,-motorcenterdia/2])cylinder(r=motorcenterdia/2, h=bodywidth, center=true);
+	translate([platelength/2+holespacing/2,plateheight/2+holespacing/2,platethickness])rotate([45,0,0])translate([0,0,-screwheaddia/2])cylinder(r=screwheaddia/2, h=bodywidth, center=true);
+	translate([platelength/2-holespacing/2,plateheight/2+holespacing/2,platethickness])rotate([45,0,0])translate([0,0,-screwheaddia/2])cylinder(r=screwheaddia/2, h=bodywidth, center=true);
+	translate([platelength/2+holespacing/2,plateheight/2-holespacing/2,platethickness])rotate([45,0,0])translate([0,0,-screwheaddia/2])cylinder(r=screwheaddia/2, h=bodywidth/2, center=true);
+	translate([platelength/2-holespacing/2,plateheight/2-holespacing/2,platethickness])rotate([45,0,0])translate([0,0,-screwheaddia/2])cylinder(r=screwheaddia/2, h=bodywidth/2, center=true);
 
 	//cleanup
 	translate([-1,-1,-motorcenterdia/sin(45)])cube([platelength+2,plateheight+2,motorcenterdia/sin(45)]);
