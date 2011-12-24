@@ -40,6 +40,9 @@ platethickness = 3;
 //cups
 cupwall = 2.7;
 
+//end effector
+extruderspacing = 40;
+extrudermountholes = 10;
 
 //base
 basemotorwall = 2.7;
