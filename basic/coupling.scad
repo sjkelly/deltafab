@@ -27,8 +27,8 @@ module coupling(){
 		}
 		translate([0,0,couplingheight/2])cylinder( r=leadscrewdia/2, h = couplingheight/2+1);
 		translate([0,-leadscrewdia/2,couplingheight/2])cube([leadscrewdia/2+couplingwall+1,leadscrewdia,couplingheight/2+1]);
-		translate([0,0,-1])cylinder( r=shaftdia/2, h = couplingheight/2+1);
-		translate([0,-shaftdia/2,-1])cube([leadscrewdia/2+couplingwall+1,shaftdia,couplingheight/2+1]);
+		translate([0,0,-1])cylinder( r=shaftdia/2, h = couplingheight/2+2);
+		translate([0,-shaftdia/2,-1])cube([leadscrewdia/2+couplingwall+1,shaftdia,couplingheight/2+2]);
 		translate([shaftdia/2+screwdia/2,leadscrewdia/2+couplingwall+1,couplingheight/4])rotate([90,0,0])cylinder(r=screwdia/2, h=leadscrewdia+couplingwall*2+2);
 		translate([leadscrewdia/2+screwdia/2,leadscrewdia/2+couplingwall+1,couplingheight*0.75])rotate([90,0,0])cylinder(r=screwdia/2, h=leadscrewdia+couplingwall*2+2);
 	}
