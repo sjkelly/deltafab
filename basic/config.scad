@@ -5,7 +5,7 @@ $fn = 31;
 //Delta config constants
 upperlinkage = 63; 
 lowerlinkage = 126;
-baseradius = 45;
+baseradius = 35;
 endeffector = 50; //radius of the end effector
 fourbarspacing = 70;
 
@@ -53,8 +53,8 @@ upperlinkwidth = 20;
 
 //coupling
 leadscrewdia = 8;
-couplingwall = 6;
-couplingheight = 40;
+couplingwall = 5;
+couplingheight = 30;
 
 //general shit
 nutwall = nutapothem/4;

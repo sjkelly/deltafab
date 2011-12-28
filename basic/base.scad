@@ -20,36 +20,29 @@ include <config.scad>;
 	//Breakout and distributed vars
 
 module base(){
-difference(){
-	union(){
-		for( i = [0 : 120 : 360]){
-			rotate([0,0,i])translate([0,shaftlength/2,0]){
-				cube([baseradius+bodywidth/2,basemotorwall,bodywidth]);
-				// dummy motor #translate([baseradius-bodywidth/2,basemotorwall,0])cube([bodywidth,bodylength,bodywidth]);
+	difference(){
+		union(){
+			for( i = [0 : 120 : 360]){
+				rotate([0,0,i])translate([0,shaftlength/2,0]){
+					cube([baseradius+bodywidth/2,basemotorwall,bodywidth]);
+					//%translate([baseradius-bodywidth/2,basemotorwall,0])cube([bodywidth,bodylength,bodywidth]); //dummy motor
 				}
-		}
-		cylinder(r=shaftlength/2+basemotorwall, h=bodywidth);
-		translate([0,shaftlength/2,0])cube([structheight+structbracewidth/2/sin(45),basemotorwall,bodywidth+structheight]);
-	}
+			}
+			cylinder(r=shaftlength/2+basemotorwall, h=bodywidth);
 
-	translate([0,0,-1])cylinder(r=shaftlength/2, h=bodywidth+2);
-	for( i = [0 : 120 : 360]){
+		}
+
+		translate([0,0,-1])cylinder(r=shaftlength/2, h=bodywidth+2); //center piece
+	
+		for( i = [0 : 120 : 360]){
 			rotate([-90,0,i])translate([baseradius,-bodywidth/2,shaftlength/2-1]){
 				cylinder(r=motorcenterdia/2, h = basemotorwall+2);
 				translate([holespacing/2,holespacing/2,0])cylinder(r=screwdia/2, h = basemotorwall+2);
 				translate([-holespacing/2,holespacing/2,0])cylinder(r=screwdia/2, h = basemotorwall+2);
 				translate([holespacing/2,-holespacing/2,0])cylinder(r=screwdia/2, h = basemotorwall+2);
 				translate([-holespacing/2,-holespacing/2,0])cylinder(r=screwdia/2, h = basemotorwall+2);
-				}
-		}
-		translate([0,shaftlength/2-1,bodywidth])rotate([0,-45,0])cube([structheight/sin(45)+1,basemotorwall+2,structheight]);
-
-		translate([0,shaftlength/2+basemotorwall,bodywidth])rotate([90,0,0]){
-		for(i=[0 : ((structheight-structbracewidth*2)/sin(45))/(structholes-1) : ((structheight-structbracewidth*2)/sin(45))]){
-			rotate([0,0,45])translate([structbracewidth/sin(45)+screwdia+i,-structbracewidth/2,-1])cylinder(r=screwdia/2,h=basemotorwall+2);
 			}
 		}
 	}
-
 }
 base();

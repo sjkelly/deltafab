@@ -27,7 +27,7 @@ module endeffector(){
 			for( i = [0 : 120 : 360]){
 				rotate([0,0,i])translate([-upperlinkthick/2,0,0]){
 					cube([upperlinkthick,endeffector,upperlinkwidth/2]);
-					cube([upperlinkthick,endeffector+upperlinkwidth/8,upperlinkwidth/4]);
+					cube([upperlinkthick,endeffector+upperlinkwidth/4,upperlinkwidth/4]);
 					translate([0,endeffector,upperlinkwidth/4])rotate([0,90,0])cylinder (r=upperlinkwidth/4, h = upperlinkthick);
 				}
 			}
